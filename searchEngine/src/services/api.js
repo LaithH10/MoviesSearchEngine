@@ -1,4 +1,4 @@
-const API_KEY = "6a04e2a847ab332944a5d58e812b1c3f";
+const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 const BASE_URL = "https://api.themoviedb.org/3";
 
 export const getPopularMovies = async () => {
