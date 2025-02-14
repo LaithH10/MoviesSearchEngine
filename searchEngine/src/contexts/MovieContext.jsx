@@ -8,35 +8,35 @@ export const MovieProvider = ({ children }) => {
   const [favourites, setFavourites] = useState([]);
 
   useEffect(() => {
-    const storedFavs = localStorage.getItem("favourites")
+    const storedFavs = localStorage.getItem("favourites");
 
-    if (storedFavs) setFavourites(JSON.parse(storedFavs))
-  }, [])
+    if (storedFavs) setFavourites(JSON.parse(storedFavs));
+  }, []);
 
   useEffect(() => {
-    localStorage.setItem('favourites', JSON.stringify(favourites))
-  }, [favourites])
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+  }, [favourites]);
 
   const addToFavourites = (movie) => {
-    setFavourites(prev => [...prev, movie])
-  }
+    setFavourites((prev) => [...prev, movie]);
+  };
 
   const removeFromFavourites = (movieId) => {
-    setFavourites(prev => prev.filter(movie => movie.id !== movieId))
-  }
+    setFavourites((prev) => prev.filter((movie) => movie.id !== movieId));
+  };
 
   const isFavourite = (movieId) => {
-    return favourites.some(movie => movie.id === movieId)
-  }
+    return favourites.some((movie) => movie.id === movieId);
+  };
 
   const value = {
-    favourites, 
+    favourites,
     addToFavourites,
     removeFromFavourites,
-    isFavourite
-  }
+    isFavourite,
+  };
 
-  return <MovieContext.Provider value={value}>
-    {children}
-    </MovieContext.Provider>;
+  return (
+    <MovieContext.Provider value={value}>{children}</MovieContext.Provider>
+  );
 };
